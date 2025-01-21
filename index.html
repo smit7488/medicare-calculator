@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Trevor Smith">
+<title>Medicare Agent Compensation Calculator</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+<script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+<header class="heading-wrapper shadow">
+   <h1 class="calculator-title">Medicare Agent Compensation Calculator</h1>
+   <!-- <button id="toggle-dark-mode">Toggle Dark Mode</button>--> 
+   
+</header>
+<div class="content-container">
+<div class="form shadow">
+   <div class="form-input-wrapper">
+      <form id="resetForm">
+         <!-- Avg Annualized Premium (Text Input) -->
+         <div class="ts-input">
+            <div class="label-wrapper">
+               <label>Avg Annualized Premium ($)</label>
+               <div class="tooltip"><img class="question-mark" src="medicare-calculators/assets/images/question.svg"> <span class="tooltiptext">The average premium amount collected annually, calculated across all active policies.</span> </div>
+            </div>
+            <input class="calculation-input" type="text" id="avgPremium" value="$2400" required>
+         </div>
+         
+         <!-- Avg Contract Level (%) (Text Input) -->
+         <div class="ts-input">
+            <div class="label-wrapper">
+               <label>Avg Contract Level (%)</label>
+               <div class="tooltip"><img class="question-mark" src="medicare-calculators/assets/images/question.svg"> <span class="tooltiptext">The average percentage of the total contract value that has been activated.</span> </div>
+            </div>
+            <input class="calculation-input" type="text" id="avgContract" style="float: left;" value="18%" required>
+         </div>
+         
+         <!-- Issued Apps Per Month (Text Input) -->
+         <div class="ts-input">
+            <div class="label-wrapper">
+               <label>Issued Apps Per Month</label>
+               <div class="tooltip"><img class="question-mark" src="medicare-calculators/assets/images/question.svg"> <span class="tooltiptext">The average number of applications issued each month.</span> </div>
+            </div>
+            <input class="calculation-input" type="text" id="appsPerMonth" value="8" required>
+         </div>
+         
+         <!-- Months of Production (Text Input) -->
+         <div class="ts-input">
+            <div class="label-wrapper">
+               <label>Months of Production</label>
+               <div class="tooltip"><img class="question-mark" src="medicare-calculators/assets/images/question.svg"> <span class="tooltiptext">The total number of months during which production occurred.</span> </div>
+            </div>
+            <input class="calculation-input" type="range" id="monthsOfProduction" value="10" min="1" max="12" step="1" onchange="updateSliderValue('monthsOfProduction')" required>
+            <span id="monthsOfProductionValue">10</span> </div>
+         
+         <!-- Avg Persistency (%) (Text Input) -->
+         <div class="ts-input">
+            <div class="label-wrapper">
+               <label>Avg Persistency (%)</label>
+               <div class="tooltip"><img class="question-mark" src="medicare-calculators/assets/images/question.svg"> <span class="tooltiptext">The percentage of policyholders who continue to pay their renewal premium.</span> </div>
+            </div>
+            <input class="calculation-input" type="text" id="avgPersistency" value="90%" required>
+         </div>
+         
+         <!-- Avg Annual Growth (%) Slider -->
+         <div class="ts-input">
+            <div class="label-wrapper">
+               <label>Avg Annual Growth (%)</label>
+               <div class="tooltip"><img class="question-mark" src="medicare-calculators/assets/images/question.svg"> <span class="tooltiptext">The average percentage increase in key metrics over the year.</span> </div>
+            </div>
+            <input class="calculation-input" type="range" id="avgGrowth" value="10" min="0" max="50" step="1" onchange="updateSliderValue('avgGrowth')" required>
+            <span id="avgGrowthValue">10%</span> </div>
+         <div class="ts-input">
+            <div class="label-wrapper">
+               <label>Years to Calculate</label>
+               <div class="tooltip"><img class="question-mark" src="medicare-calculators/assets/images/question.svg"> <span class="tooltiptext">The average percentage increase in key metrics over the year.</span> </div>
+            </div>
+            <input class="calculation-input" type="range" id="yearsSlider" value="3" min="0" max="20" step="1" onchange="updateSliderValue('yearsSlider')" required>
+            <span id="yearsSliderValue">3</span> </div>
+      </form>
+      <div class="button-wrapper">
+         <button type="button" onclick="calculateMedSupp()">Calculate</button>
+      </div>
+   </div>
+   <div class="outputswrapper">
+      <div class="graph-output">
+         <div class="graph-wrapper">
+            <div class="graph-wrapper">
+               <canvas id="compChart"></canvas>
+            </div>
+            <div class="outeroutputs" id="yearOutputs"></div>
+            <!-- Dynamic year outputs will be appended here --> 
+            
+         </div>
+      </div>
+   </div>
+</div>
+
+</body>
+</html>
