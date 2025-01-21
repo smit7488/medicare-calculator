@@ -8,7 +8,7 @@ The Medicare Premium & Commission Calculator is a web-based application designed
 - **Responsive Design**: The calculator is optimized for both desktop and mobile screens.
 - **Dynamic Calculation**: The app calculates premiums, commissions, and other related metrics based on user input.
 - **Interactive Graphs**: The results are displayed in an interactive chart using Chart.js.
-- **Dark Mode**: The app supports dark mode and automatically switches based on the user's system preferences.
+- **Dark Mode**: COMING SOON
 - **Tooltips**: Provides informative tooltips for each input field.
 - **Mobile-Friendly**: Optimized layout for small screens with CSS media queries.
 
@@ -59,21 +59,11 @@ To reset the inputs and start fresh, simply click the "Reset" button at the bott
 - **Chart.js**: To render interactive graphs for visualizing the results.
 - **Dark Mode**: Automatic switching between light and dark modes based on system preference.
 
-## Contributions
-
-We welcome contributions! Feel free to fork this repository, submit issues, and create pull requests with your changes. Ensure to follow proper coding standards and write unit tests for new features.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
 - **Chart.js** for providing an easy-to-use graphing library.
 - **jQuery** for simplifying JavaScript DOM manipulation.
 - **CSS Media Queries** for responsive design.
-- **Trevor Smith** - Author and Developer of the project.
 
-## Contact
 
-For questions or support, please contact [your-email@example.com](mailto:your-email@example.com).
+
